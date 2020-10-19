@@ -42,6 +42,13 @@ const routes = [
     ],
   },
   {
+    path: '/guarantee',
+    component: () => import('layouts/ClientLayout.vue'),
+    children: [
+      { path: '', component: () => import('pages/Guarantee.vue') },
+    ],
+  },
+  {
     path: '/product/:id',
     component: () => import('layouts/ClientLayout.vue'),
     children: [
