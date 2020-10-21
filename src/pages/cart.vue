@@ -2,7 +2,7 @@
   <div>
     <app-cart-steps />
     <hr />
-    <h1 class="center">Your Cart</h1>
+    <h1 class="center">Ваша корзина</h1>
 
     <section v-if="cartUIStatus === 'idle'">
       <app-cart-display />
