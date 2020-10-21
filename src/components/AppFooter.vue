@@ -1,20 +1,13 @@
 <template>
   <footer>
     <section class="callout">
-      <h2>"The surprising styles of Skyline Ivy are advanced for all seasons."</h2>
-      <p>Hansel Andersen</p>
+      <h2>"Поразительное качество в сочетании с приемлимыми ценами, вот что такое Дверной Арсенал."</h2>
+      <p>Дмитрий Аксёнов, основатель</p>
     </section>
     <app-footer-links />
     <div class="sarahstuff">
       <p>
-        This project is
-        <a href="https://github.com/sdras/ecommerce-netlify">open source on github</a>,
-        hosted with
-        <a href="https://bit.ly/2G29YwK">Netlify</a>, and made with love by Sarah Drasner,
-        <a
-          href="https://twitter.com/sarah_edo"
-        >@sarah_edo (twitter)</a> &
-        <a href="https://github.com/sdras">@sdras (github)</a>
+        © «Арсенал Дверей», 2012—2020. Тула, Металлистов, дом 90 Телефон: +7 (999) 780-72-83, E-mail: clients@dverok.shop
       </p>
     </div>
   </footer>

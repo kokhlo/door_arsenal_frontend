@@ -4,9 +4,9 @@
 
 <script>
 export default {
-  name: 'ComponentName',
-  data() {
-    return {};
-  },
-};
+  // name: 'ComponentName',
+  data () {
+    return {}
+  }
+}
 </script>

@@ -3,20 +3,20 @@
     <section v-if="cartCount > 0">
       <table>
         <tr>
-          <th>Product</th>
-          <th>Price</th>
-          <th>Quantity</th>
-          <th>Total</th>
+          <th>Товар</th>
+          <th>Цена</th>
+          <th>Количество</th>
+          <th>Итого</th>
           <th></th>
         </tr>
         <tr v-for="item in cart" :key="item.id">
           <td>
             <img :src="`/products/${item.img}`" :alt="item.name" class="product-img" />
             <h3 class="product-name">{{ item.name }}</h3>
-            <h5 v-if="item.size" class="product-size">Size: {{ item.size }}</h5>
+            <h5 v-if="item.size" class="product-size">Ширина полотна: {{ item.size }}</h5>
           </td>
           <td>
-            <h4 class="price">{{ item.price | dollar }}</h4>
+            <h4 class="price">{{ item.price | ruble }}</h4>
           </td>
           <td>
             <button @click="removeOneFromCart(item)" class="quantity-adjust">
@@ -25,7 +25,7 @@
             <strong> {{ item.quantity }}</strong>
             <button @click="addToCart(item)" class="quantity-adjust">+</button>
           </td>
-          <td>{{ (item.quantity * item.price) | dollar }}</td>
+          <td>{{ (item.quantity * item.price) | ruble }}</td>
           <td>
             <button @click="removeAllFromCart(item)" class="delete-product">
               x
@@ -39,24 +39,24 @@
         <div class="total">
           <div class="caption">
             <p>
-              <strong>Subtotal:</strong>
+              <strong>Сумма без НДС:</strong>
             </p>
-            <p>Shipping:</p>
-            <p class="golden">Total:</p>
+            <p>Доставка:</p>
+            <p class="golden">Итого:</p>
           </div>
           <div class="num">
             <p>
-              <strong>{{ cartTotal | dollar }}</strong>
+              <strong>{{ cartTotal | ruble }}</strong>
             </p>
-            <p>Free Shipping</p>
-            <p class="golden">{{ cartTotal | dollar }}</p>
+            <p>Бесплатная доставка</p>
+            <p class="golden">{{ cartTotal | ruble }}</p>
           </div>
         </div>
       </section>
     </section>
 
     <section v-else class="center">
-      <p>Your cart is empty, fill it up!</p>
+      <p>Ваша корзина пуста, добавьте товар!</p>
       <button class="pay-with-stripe">
         <router-link exact to="/">Домой</router-link>
       </button>

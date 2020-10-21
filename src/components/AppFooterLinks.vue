@@ -1,27 +1,49 @@
 <template>
   <section>
-    <ul>
-      <li>About</li>
-      <li>Company</li>
-      <li>Locations</li>
-      <li>Contact</li>
-      <li>Hours</li>
-    </ul>
-    <ul>
-      <li>Twitter</li>
-      <li>Facebook</li>
-      <li>Instagram</li>
-      <li>LinkedIn</li>
-    </ul>
-    <ul>
-      <h4>Newsletter:</h4>
-      <input type="text" />
-    </ul>
+    <nav>
+      <ul>
+        <li><router-link exact to="/aboutUs">О компании</router-link></li>
+        <li><router-link exact to="/guarantee">Гарантия</router-link></li>
+        <li><router-link exact to="/addresses">Адреса магазинов</router-link></li>
+        <li><router-link exact to="#">Свяжитесь с нами</router-link></li>
+        <li><router-link exact to="#">Стать дилером</router-link></li>
+      </ul>
+    </nav>
+    <nav>
+      <ul>
+        <li><router-link exact to="#">Twitter</router-link></li>
+        <li><router-link exact to="#">Вконтакте</router-link></li>
+        <li><router-link exact to="#">Instagram</router-link></li>
+        <li><router-link exact to="#">Одноклассники</router-link></li>
+      </ul>
+    </nav>
+    <nav>
+      <ul>
+        <h6>Подпишитесь на новостную рассылку:</h6>
+        <q-input outlined label="Введите ваш email" v-model="emailSubscription" type="text" />
+      </ul>
+    </nav>
+    <feedback-dialog v-model="showFeedbackForm"></feedback-dialog>
   </section>
 </template>
 
 <script>
-export default {};
+import FeedbackDialog from 'components/FeedbackDialog.vue';
+
+export default {
+  name: 'app-footer-links',
+  data() {
+    return {
+      emailSubscription: '',
+      showFeedbackForm: true,
+    };
+  },
+  components: {
+    FeedbackDialog,
+  },
+  mounted() {},
+  methods: {},
+};
 </script>
 
 <style lang="scss" scoped>

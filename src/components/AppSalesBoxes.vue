@@ -20,13 +20,13 @@ export default {
         },
         {
           icon: 'icon-cal.svg',
-          heading: '24/7 Customer Service',
-          details: 'Call us any time',
+          heading: 'Оперативная установка',
+          details: 'Большинство дверей есть в наличии, не нужно ждать',
         },
         {
           icon: 'icon-service.svg',
-          heading: 'Easy Online Returns',
-          details: 'Send Within 30 Days',
+          heading: 'Вызовите мастера',
+          details: 'Бесплатный вызов замерщика',
         },
       ],
     };
@@ -39,7 +39,7 @@ export default {
   margin: 70px 0;
   div {
     border: 1px solid #ddd;
-    min-height: 150px;
+    min-height: 355px;
     justify-self: center;
     align-self: center;
     text-align: center;

@@ -1,7 +1,7 @@
 <template>
   <section>
     <h2>
-      <span>Featured Products</span>
+      <span>Хиты сезона:</span>
     </h2>
     <div class="featureditems">
       <div class="item" v-for="product in featuredProducts" :key="product.id">
@@ -10,7 +10,7 @@
         <h4>{{ product.price | dollar }}</h4>
 
         <router-link exact :to="`/product/${product.id}`">
-          <button class="multi-item">View Item ></button>
+          <button class="multi-item">Подробнее ></button>
         </router-link>
       </div>
     </div>

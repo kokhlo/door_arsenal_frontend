@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <div v-if="cartUIStatus === 'idle'" class="payment">
-      <h3>Please enter your payment details:</h3>
+      <h3>Пожалуйста введите данные чтобы совершить платёж:</h3>
       <label for="email">Email</label>
       <br />
       <input id="email" type="email" v-model="stripeEmail" placeholder="name@example.com" />
@@ -54,7 +54,7 @@
       </div>
 
       <div v-else-if="cartUIStatus === 'success'" class="loadcontain">
-        <h4>Success!</h4>
+        <h4>Успешно оплачено!</h4>
       </div>
     </div>
   </div>
