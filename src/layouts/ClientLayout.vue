@@ -12,7 +12,7 @@
           class="q-mr-sm"
         />
 
-        <q-toolbar-title v-if="$q.screen.gt.xs" shrink class="row items-center no-wrap">
+        <q-toolbar-title @click="$router.push('/')" v-if="$q.screen.gt.xs" shrink class="row items-center no-wrap">
           <span class="q-ml-sm"><strong>Дверной</strong> Арсенал</span>
         </q-toolbar-title>
 
@@ -23,7 +23,7 @@
           dense
           v-model="search"
           color="bg-grey-7 shadow-1"
-          placeholder="Search for topics, locations & sources"
+          placeholder="Поиск по цвету, модели, производителю"
         >
           <template v-slot:prepend>
             <q-icon v-if="search === ''" name="search" />
@@ -40,7 +40,7 @@
               <q-menu anchor="bottom right" self="top right">
                 <div class="q-pa-md" style="width: 400px">
                   <div class="text-body2 text-grey q-mb-md">
-                    Narrow your search results
+                    Сделайте ваш запрос более точными
                   </div>
 
                   <div class="row items-center">
@@ -79,7 +79,7 @@
                         color="grey-7"
                         size="md"
                         style="min-width: 68px;"
-                        label="Search"
+                        label="Искать"
                         v-close-popup
                       />
                       <q-btn flat dense no-caps
@@ -87,7 +87,7 @@
                         size="md"
                         style="min-width: 68px;"
                         @click="onClear"
-                        label="Clear"
+                        label="Очистить"
                         v-close-popup
                       />
                     </div>
@@ -104,11 +104,11 @@
           <q-btn v-if="$q.screen.gt.sm" round dense flat color="text-grey-7" icon="apps">
             <q-tooltip>Настройки</q-tooltip>
           </q-btn>
-          <q-btn round dense flat color="grey-8" icon="notifications">
-            <q-badge color="red" text-color="white" floating>
-              2
+          <q-btn round dense flat color="grey-8" exact to="/cart" icon="shopping_cart">
+            <q-badge color="red" text-color="white" v-if="cartCount > 0" floating>
+              {{ cartCount }}
             </q-badge>
-            <q-tooltip>Уведомления</q-tooltip>
+            <q-tooltip>Корзина</q-tooltip>
           </q-btn>
           <q-btn round flat>
             <q-avatar size="26px">
@@ -171,13 +171,13 @@
           <div class="q-mt-md">
             <div class="flex flex-center q-gutter-xs">
               <a class="GNL__drawer-footer-link"
-                href="javascript:void(0)" aria-label="Privacy">Privacy</a>
+                href="javascript:void(0)" aria-label="Privacy">Контакты</a>
               <span> · </span>
               <a class="GNL__drawer-footer-link"
-                href="javascript:void(0)" aria-label="Terms">Terms</a>
+                href="javascript:void(0)" aria-label="Terms">Партнёрство</a>
               <span> · </span>
               <a class="GNL__drawer-footer-link"
-                href="javascript:void(0)" aria-label="About">About Google</a>
+                href="javascript:void(0)" aria-label="About">О нас</a>
             </div>
           </div>
         </q-list>
@@ -186,7 +186,7 @@
 
     <q-page-container>
       <div>
-        <app-nav />
+        <app-nav v-if="!false" />
         <main>
           <router-view />
         </main>
@@ -200,12 +200,16 @@
 import AppFooter from 'components/AppFooter.vue';
 import AppNav from 'components/AppNav.vue';
 import { fasGlobeAmericas, fasFlask } from '@quasar/extras/fontawesome-v5';
+import { mapGetters } from 'vuex';
 
 export default {
   name: 'GoogleNewsLayout',
   components: {
     AppFooter,
     AppNav,
+  },
+  computed: {
+    ...mapGetters(['cartCount']),
   },
   data() {
     return {
@@ -219,30 +223,26 @@ export default {
       byWebsite: '',
       byDate: 'Any time',
       links1: [
-        { icon: 'web', text: 'Распродажа', anchor: '/all' },
+        { icon: 'web', text: 'Распродажа', anchor: '/sales' },
         { icon: 'person', text: 'Межкомнатные двери', anchor: '/internal' },
         { icon: 'star_border', text: 'Входные двери', anchor: '/external' },
         { icon: 'search', text: 'Фурнитура', anchor: '/furniture' },
-        { icon: 'search', text: 'Мои заказы', anchor: '#' },
+        { icon: 'search', text: 'Мои заказы', anchor: '/orders' },
       ],
       links2: [
-        { icon: 'flag', text: 'Canada', anchor: '#' },
-        { icon: fasGlobeAmericas, text: 'World', anchor: '#' },
-        { icon: 'place', text: 'Local', anchor: '#' },
-        { icon: 'domain', text: 'Business', anchor: '#' },
-        { icon: 'memory', text: 'Technology', anchor: '#' },
-        { icon: 'local_movies', text: 'Entertainment', anchor: '#' },
-        { icon: 'directions_bike', text: 'Sports', anchor: '#' },
-        { icon: fasFlask, text: 'Science', anchor: '#' },
-        { icon: 'fitness_center', text: 'Health ', anchor: '#' },
+        { icon: 'flag', text: 'Все двери', anchor: '/all' },
+        { icon: 'flag', text: 'Программа лояльности', anchor: '#' },
+        { icon: fasGlobeAmericas, text: 'Как выбрать дверь', anchor: '#' },
+        { icon: 'place', text: 'Бесплатная консультация', anchor: '#' },
+        { icon: fasFlask, text: 'Гарантия', anchor: '/guarantee' },
       ],
       links3: [
         { icon: '', text: 'Language & region', anchor: '#' },
-        { icon: '', text: 'Settings', anchor: '#' },
+        { icon: '', text: 'Личный кабинет', anchor: '#' },
         { icon: 'open_in_new', text: 'Get the Android app', anchor: '#' },
         { icon: 'open_in_new', text: 'Get the iOS app', anchor: '#' },
-        { icon: '', text: 'Send feedback', anchor: '#' },
-        { icon: 'open_in_new', text: 'Help', anchor: '#' },
+        { icon: '', text: 'Обратная связь', anchor: '#' },
+        { icon: 'open_in_new', text: 'Помощь', anchor: '#' },
       ],
     };
   },
