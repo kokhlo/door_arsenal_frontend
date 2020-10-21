@@ -17,21 +17,28 @@ const routes = [
     path: '/internal',
     component: () => import('layouts/ClientLayout.vue'),
     children: [
-      { path: '', component: () => import('pages/men.vue') },
+      { path: '', component: () => import('pages/Internal.vue') },
     ],
   },
   {
     path: '/external',
     component: () => import('layouts/ClientLayout.vue'),
     children: [
-      { path: '', component: () => import('pages/women.vue') },
+      { path: '', component: () => import('pages/External.vue') },
     ],
   },
   {
     path: '/furniture',
     component: () => import('layouts/ClientLayout.vue'),
     children: [
-      { path: '', component: () => import('pages/Index.vue') },
+      { path: '', component: () => import('pages/Furniture.vue') },
+    ],
+  },
+  {
+    path: '/sales',
+    component: () => import('layouts/ClientLayout.vue'),
+    children: [
+      { path: '', component: () => import('pages/Sales.vue') },
     ],
   },
   {
