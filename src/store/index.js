@@ -18,9 +18,11 @@ export default function (/* { ssrContext } */) {
       clientSecret: '',
     },
     getters: {
-      featuredProducts: (state) => state.storedata.slice(0, 3),
-      women: (state) => state.storedata.filter((el) => el.gender === 'Female'),
-      men: (state) => state.storedata.filter((el) => el.gender === 'Male'),
+      featuredProducts: (state) => state.storedata.slice(12, 15),
+      internal: (state) => state.storedata.filter((el) => el.category === 'Internal'),
+      external: (state) => state.storedata.filter((el) => el.category === 'External'),
+      furniture: (state) => state.storedata.filter((el) => el.category === 'Furniture'),
+      sales: (state) => state.storedata.filter((el) => el.sale === true),
       cartCount: (state) => {
         if (!state.cart.length) return 0;
         return state.cart.reduce((ac, next) => ac + next.quantity, 0);
